@@ -6,10 +6,11 @@ pipeline {
     stage('Send Start Alert') {
       steps {
         script {
+          // Send success notification
           telegramSend(
-            token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-            chatId: '-688306623',
-            message: "The job RP1 Build and Test has started and is currently running."
+              token: 'Telegram_Token',
+              chatId: env.Telegram_ChatID,
+              message: "The job Build & Test has started and is currently running."
           )
         }
       }
@@ -112,8 +113,8 @@ pipeline {
       script {
         // Send success notification
         telegramSend(
-          token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-          chatId: '-688306623',
+          token: 'Telegram_Token',
+          chatId: env.Telegram_ChatID,
           message: "The job RP1 Build and Test has completed successfully."
         )
       }
@@ -125,8 +126,8 @@ pipeline {
         def failureCause = currentBuild.getResult().toString()
         // Send failure notification
         telegramSend(
-          token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-          chatId: '-688306623',
+          token: 'Telegram_Token',
+          chatId: env.Telegram_ChatID,
           message: "The job RP1 Build and Test has failed due to ${failureCause}."
         )
       }

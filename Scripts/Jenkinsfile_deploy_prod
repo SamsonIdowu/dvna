@@ -6,15 +6,10 @@ pipeline {
     stage('Send Start Alert') {
       steps {
         script {
-          // Get the user who launched the job
-          //wrap([$class: 'BuildUser']) {
-          //  def user = env.BUILD_USER
-          //}
-          // Send start notification
           telegramSend(
-            token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-            chatId: '-688306623',
-            message: "The job Deploy to Production has started and is currently running."
+              token: 'Telegram_Token',
+              chatId: env.Telegram_ChatID,
+              message: "The job Deploy to Production has started and is currently running."
           )
         }
       }
@@ -99,8 +94,8 @@ pipeline {
             script {
                 // Send success notification
                 telegramSend(
-                    token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-                    chatId: '-688306623',
+                    token: 'Telegram_Token',
+                    chatId: env.Telegram_ChatID,
                     message: "The job Deploy to Production has completed successfully."
                 )
             }
@@ -111,8 +106,8 @@ pipeline {
                 def failureCause = currentBuild.getResult().toString()
                 // Send failure notification
                 telegramSend(
-                    token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
-                    chatId: '-688306623',
+                    token: 'Telegram_Token',
+                    chatId: env.Telegram_ChatID,
                     message: "The job Deploy to Production has failed due to ${failureCause}."
                 )
             }
