@@ -97,7 +97,7 @@ pipeline {
                 def failureCause = currentBuild.getResult().toString()
                 // Send failure notification
                 telegramSend(
-                    t\oken: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
+                    token: '5451305173:AAGSmRL_518hBsPx3N_Zih_cy0oeMbZhpyI',
                     chatId: '-688306623',
                     message: "The job Deploy to test environment has failed due to ${failureCause}."
                 )
