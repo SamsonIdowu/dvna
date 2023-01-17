@@ -31,7 +31,7 @@ pipeline {
         echo 'Add Docker’s official GPG key'
         sh '''
           sudo mkdir -p /etc/apt/keyrings
-          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg | true
         '''
 
         echo 'Setting set up the docker repository'
